@@ -38,22 +38,22 @@
         "physicalKeyboard": false,
         "usb": "USB 2.0"
     }, 
-    "id": "apple-iphone-13-pro-max", 
+    "id": "samsung-galaxy-s21", 
     "images": {
-        "black": [
-            "https://content.rozetka.com.ua/goods/images/big/221280247.jpg",
-            "https://content.rozetka.com.ua/goods/images/big/221022194.jpg",
-            "https://content.rozetka.com.ua/goods/images/big/221280361.jpg"
+        "grey": [
+            "https://content2.rozetka.com.ua/goods/images/big/45467269.jpg",
+            "https://content.rozetka.com.ua/goods/images/big/45467270.jpg",
+            "https://content2.rozetka.com.ua/goods/images/big/45467271.jpg"
         ],
-        "silver": [
-            "https://content2.rozetka.com.ua/goods/images/big/221301351.jpg",
-            "https://content2.rozetka.com.ua/goods/images/big/221022675.jpg",
-            "https://content2.rozetka.com.ua/goods/images/big/221301349.jpg"
+        "white": [
+           "https://content.rozetka.com.ua/goods/images/big/45431445.jpg",
+           "https://content.rozetka.com.ua/goods/images/big/45431446.jpg",
+           "https://content.rozetka.com.ua/goods/images/big/45431447.jpg"
         ],
-        "blue": [
-            "https://content1.rozetka.com.ua/goods/images/big/221291370.jpg",
-            "https://content.rozetka.com.ua/goods/images/big/221022783.jpg",
-            "https://content.rozetka.com.ua/goods/images/big/221291368.jpg"
+        "violet": [
+            "https://content1.rozetka.com.ua/goods/images/big/45447908.jpg",
+            "https://content.rozetka.com.ua/goods/images/big/45447912.jpg",
+            "https://content.rozetka.com.ua/goods/images/big/45447920.jpg"
         ]
     }, 
     "name": "Samsung Galaxy S22 Ultra 12/512 GB", 
