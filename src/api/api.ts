@@ -21,7 +21,6 @@ export const getPhones = (setPhoneList: any) => fetch(PRODUCTS)
   .then((data) => {
     const phones = data.filter((item: any) => item.type === 'phone');
 
-    console.log(data)
     setPhoneList(phones);
   });
 

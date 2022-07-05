@@ -11,6 +11,7 @@ import { AddFavouriteBtn } from "../../components/AddFavouriteBtn";
 import { ProductsSlider } from "../../components/ProductsSlider";
 
 import "./productDetails.scss";
+import { useAppSelector } from "../../hooks/redux";
 
 export const ProductDetails: React.FC = () => {
   const [productDetails, setProductDetails] = useState<ProductInfo>();
@@ -19,12 +20,13 @@ export const ProductDetails: React.FC = () => {
   const [currentImage, setCurrentImage] = useState("");
   const [currentColor, setCurrentColor] = useState();
   const [capacity, setCapacity] = useState("");
+  const { products } = useAppSelector(state => state.products)
 
   useEffect(() => {
     if (productId) {
       getProductItem(productId).then((data) => {
         setProductDetails(data);
-        setCurrentColor(data.images[0].colorId);
+        setCurrentColor(data.images[0].colorName);
         setCurrentImage(data.images[0].src[0]);
         setCapacity(data.storage.capacity);
         setProductInfo(data);
@@ -35,7 +37,7 @@ export const ProductDetails: React.FC = () => {
 
   useEffect(() => {
     setCurrentImage(
-      productDetails?.images.find((item: any) => item.colorId === currentColor)
+      productDetails?.images.find((item: any) => item.colorName === currentColor)
         .src[0]
     );
   }, [currentColor]);
@@ -74,7 +76,7 @@ export const ProductDetails: React.FC = () => {
                 <div className="product__gallary gallary">
                   <div className="gallary__thumbs">
                     {productDetails.images
-                      .find((item: any) => item.colorId === currentColor)
+                      .find((item: any) => item.colorName === currentColor)
                       .src.map((image: any) => (
                         <button
                           key={image.colorId}
@@ -102,9 +104,9 @@ export const ProductDetails: React.FC = () => {
                       productDetails.images.map((item: any) => (
                         <div
                           key={item.colorId}
-                          onClick={() => setCurrentColor(item.colorId)}
+                          onClick={() => setCurrentColor(item.colorName)}
                           className={classNames("product-colors__item", {
-                            "product-colors__item_active": item.colorId === currentColor,
+                            "product-colors__item_active": item.colorName === currentColor,
                           })}
                         >
                           <div
@@ -231,8 +233,8 @@ export const ProductDetails: React.FC = () => {
         </div>
       )}
 
-      {/* <ProductsSlider
-        productsList={getsuggProducts()}
+      <ProductsSlider
+        productsList={products}
         title="Hot prices"
         sliderSettings={{
           dots: false,
@@ -242,7 +244,7 @@ export const ProductDetails: React.FC = () => {
           slidesToShow: 4,
           slidesToScroll: 1,
         }}
-      /> */}
+      />
     </div>
   );
 };

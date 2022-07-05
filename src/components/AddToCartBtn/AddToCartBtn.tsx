@@ -12,11 +12,10 @@ import {
 
 type Props = {
   id: string;
-  capacity?: string;
   color?: string;
 };
 
-export const AddToCartBtn: React.FC<Props> = ({ id, color, capacity }) => {
+export const AddToCartBtn: React.FC<Props> = ({ id, color }) => {
   const dispatch = useAppDispatch();
   const { cart } = useAppSelector((state) => state.cart);
   const { products } = useAppSelector((state) => state.products);
@@ -28,11 +27,7 @@ export const AddToCartBtn: React.FC<Props> = ({ id, color, capacity }) => {
     } else {
       setIsActive(false);
     }
-  }, []);
-
-  useEffect(() => {
-    window.localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+  }, [id]);
 
   const addToCart = () => {
     if (isActive) {
@@ -41,10 +36,10 @@ export const AddToCartBtn: React.FC<Props> = ({ id, color, capacity }) => {
     } else {
       const card = products?.filter((item: ProductItem) => item.id === id)[0];
       const options = {
-        color: !color ? '' : color
+        color: !color ? '' : color,
       }
 
-      dispatch(addNewItemToCart({ count: 1, item: { ...card, ...options } }));
+      dispatch(addNewItemToCart({ count: 1, item: { ...card, ...options, } }));
       setIsActive(!isActive);
     }
   };

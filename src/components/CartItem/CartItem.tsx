@@ -38,10 +38,10 @@ export const CartItem: React.FC<Props> = ({
         onClick={() => deleteItem(cartItem.item.id)}
       />
       <div className="cart-item__img">
-        <img src={`${process.env.REACT_APP_IMG_LINK}${cartItem.item.imageUrl}`} alt="" />
+        <img src={`${cartItem.item.imageUrl}`} alt="" />
       </div>
       <h2 className="cart-item__title">
-        {cartItem.item.name}
+        {`${cartItem.item.name} ${cartItem.item.color}`}
       </h2>
       <div className="cart-item__count">
         <button

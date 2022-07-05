@@ -10,4 +10,5 @@ export interface ProductItem {
   screen?: string;
   snippet: string;
   type: string;
+  color?: string;
 }

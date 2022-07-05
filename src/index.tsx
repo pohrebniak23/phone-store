@@ -9,7 +9,7 @@ const store = setupStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <HashRouter>
+    <HashRouter basename="/">
       <App />
     </HashRouter>
   </Provider>,

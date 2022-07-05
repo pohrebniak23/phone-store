@@ -44,6 +44,10 @@ export const Header: React.FC = () => {
     dispatch(loadFavourites(parsedFavourite));
     dispatch(loadCart(parsedCart));
   }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
   
 
   return (

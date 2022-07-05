@@ -26,9 +26,9 @@ export const Banner: React.FC = () => {
           prevArrow={<PrevArrow />}
           nextArrow={<NextArrow />}
         >
-          <img src="./phones-store/img/Preview/preview1.jpg" alt="" />
-          <img src="./phones-store/img/Preview/preview2.jpeg" alt="" />
-          <img src="./phones-store/img/Preview/preview3.jpeg" alt="" />
+          <img src={`${process.env.REACT_APP_LINK}/img/Preview/preview1.jpg`} alt="" />
+          <img src={`${process.env.REACT_APP_LINK}/img/Preview/preview2.jpeg`} alt="" />
+          <img src={`${process.env.REACT_APP_LINK}/img/Preview/preview3.jpeg`} alt="" />
         </Slider>
       </div>
     </div>
