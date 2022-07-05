@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/phones-store/static/css/main.b46fb176.css",
-    "main.js": "/phones-store/static/js/main.19051f52.js",
+    "main.js": "/phones-store/static/js/main.3fb88624.js",
     "static/media/Mont-Regular.otf": "/phones-store/static/media/Mont-Regular.1d26d89f7339866d3133.otf",
     "static/media/Mont-SemiBold.otf": "/phones-store/static/media/Mont-SemiBold.8979d71a3146ca1d761f.otf",
     "static/media/Mont-Bold.otf": "/phones-store/static/media/Mont-Bold.03c8c2f6127c1da0fc39.otf",
@@ -18,10 +18,10 @@
     "static/media/small-arrow.svg": "/phones-store/static/media/small-arrow.2f3d0ae0e3d937430e2b16e58218fe04.svg",
     "index.html": "/phones-store/index.html",
     "main.b46fb176.css.map": "/phones-store/static/css/main.b46fb176.css.map",
-    "main.19051f52.js.map": "/phones-store/static/js/main.19051f52.js.map"
+    "main.3fb88624.js.map": "/phones-store/static/js/main.3fb88624.js.map"
   },
   "entrypoints": [
     "static/css/main.b46fb176.css",
-    "static/js/main.19051f52.js"
+    "static/js/main.3fb88624.js"
   ]
 }
