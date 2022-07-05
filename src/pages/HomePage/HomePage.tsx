@@ -1,22 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { Banner } from '../../components/Banner';
 import { ProductItem } from '../../types/ProductItem';
-
-import './homePage.scss';
 import { ShopCategory } from '../../components/ShopCategory';
-import { getPhones } from '../../api/api';
+import { useAppSelector } from '../../hooks/redux';
+import './homePage.scss';
 
 export const HomePage: React.FC = () => {
-  const [products, setProducts] = useState<ProductItem[]>([]);
-
-  useEffect(() => {
-    getPhones(setProducts);
-//     fetch(`https://mate-academy.github.io/react_phone-catalog
-// /api/products.json`)
-//       .then((resp) => resp.json())
-//       .then((data: ProductItem[]) => setProducts(data));
-  }, []);
+  const { products } = useAppSelector(state => state.products);
 
   const hotPrice = () => {
     const hotPrices = [...products];

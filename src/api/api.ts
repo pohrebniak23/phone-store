@@ -1,5 +1,14 @@
-const PRODUCTS = './api/products.json';
-const PRODUCT_DETAILS = `./api/products/`;
+const PRODUCTS = './phones-store/api/products.json';
+const PRODUCT_DETAILS = `./phones-store/api/products/`;
+
+export const getProducts = () => fetch(PRODUCTS)
+  .then((res) => {
+    if (!res.ok) {
+      throw new Error('Error with loading data...');
+    }
+
+    return res.json();
+  })
 
 export const getPhones = (setPhoneList: any) => fetch(PRODUCTS)
   .then((res) => {
@@ -46,8 +55,6 @@ export const getAccessories = (setAccessoriesList: any) => fetch(PRODUCTS)
 
 export const getProductItem = (
   id: string,
-  setProductInfo: any,
-  setDefaultImage: any,
 ) => (
   fetch(`${PRODUCT_DETAILS}${id}.json`)
     .then((res) => {
@@ -56,9 +63,5 @@ export const getProductItem = (
       }
 
       return res.json();
-    })
-    .then((data) => {
-      setProductInfo(data);
-      setDefaultImage(data.images[0]);
     })
 );

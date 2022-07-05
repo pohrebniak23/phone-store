@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   NavLink,
   Link,
@@ -15,37 +15,36 @@ import { ReactComponent as CartIcon } from '../../assets/icons/cart-icon.svg';
 import { ReactComponent as Logo } from '../../assets/icons/Logo.svg';
 
 import './header.scss';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { getProductsAction } from '../../redux/reducers/actionCreators';
+import { ProductItem } from '../../types/ProductItem';
+import { CartList } from '../../types/CartList';
+import { loadFavourites } from '../../redux/reducers/favouritesSlice';
+import { loadCart } from '../../redux/reducers/cartSlice';
 
 export const Header: React.FC = () => {
-  const favouritesCount = () => {
-    const count: string | null = localStorage.getItem('favourite');
-    const countParsed = count ? JSON.parse(count) : [];
+  const { favourites } = useAppSelector(state => state.favourites);
+  const { cart } = useAppSelector(state => state.cart);
+  const cartCount = cart.reduce((prev, current) => prev + +current.count, 0);
 
-    if (countParsed.length > 0) {
-      return (
-        <span className="header__favouritesCount">
-          {countParsed.length}
-        </span>
-      );
-    }
+  const dispatch = useAppDispatch();
 
-    return '';
-  };
+  useEffect(() => {
+    dispatch(getProductsAction());
+    const favouriteValue: string | null = localStorage.getItem('favourite');
+    const parsedFavourite: ProductItem[] | [] = favouriteValue
+      ? JSON.parse(favouriteValue)
+      : [];
 
-  const cartCount = () => {
-    const count: string | null = localStorage.getItem('cart');
-    const countParsed = count ? JSON.parse(count) : [];
+    const cartValue: string | null = localStorage.getItem('cart');
+    const parsedCart: CartList[] | [] = cartValue
+      ? JSON.parse(cartValue)
+      : [];
 
-    if (countParsed.length > 0) {
-      return (
-        <span className="header__cartCount">
-          {countParsed.length}
-        </span>
-      );
-    }
-
-    return '';
-  };
+    dispatch(loadFavourites(parsedFavourite));
+    dispatch(loadCart(parsedCart));
+  }, []);
+  
 
   return (
     <div className="header">
@@ -81,7 +80,11 @@ export const Header: React.FC = () => {
         )}
       >
         <FavouritesIcon />
-        {favouritesCount()}
+        {favourites.length > 0 && (
+          <span className="header__favouritesCount">
+            {favourites.length}
+          </span>
+        )}
       </NavLink>
       <NavLink
         to="/cart"
@@ -91,7 +94,11 @@ export const Header: React.FC = () => {
         )}
       >
         <CartIcon />
-        {cartCount()}
+        {cart.length > 0 && (
+          <span className="header__cartCount">
+            {cartCount}
+          </span>
+        )}
       </NavLink>
     </div>
   );

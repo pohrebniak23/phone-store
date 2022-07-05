@@ -1,16 +1,16 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { ReactComponent as Arrow } from '../../assets/icons/small-arrow.svg';
-import { ReactComponent as Home } from '../../assets/icons/Home.svg';
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import { ReactComponent as Arrow } from "../../assets/icons/small-arrow.svg";
+import { ReactComponent as Home } from "../../assets/icons/Home.svg";
 
-import './breadCrumbs.scss';
+import "./breadCrumbs.scss";
 
 type Props = {
   title: string;
 };
 
 export const BreadCrumbs: React.FC<Props> = ({ title }) => {
-  const location = useLocation().pathname.split('/').slice(1);
+  const location = useLocation().pathname.split("/").slice(1);
 
   return (
     <div className="breadcrumbs">
@@ -23,24 +23,17 @@ export const BreadCrumbs: React.FC<Props> = ({ title }) => {
       </div>
 
       {location.slice(0, -1).map((item) => (
-        <>
-          <Link
-            key={item}
-            to={`/${item}`}
-            className="breadcrumbs__link"
-          >
+        <div className="breadcrumbs__item" key={item}>
+          <Link to={`/${item}`} className="breadcrumbs__link">
             {item}
           </Link>
           <div className="breadcrumbs__arrow">
             <Arrow />
           </div>
-        </>
+        </div>
       ))}
 
-      <span className="breadcrumbs__text">
-        {title}
-      </span>
-
+      <span className="breadcrumbs__text">{title}</span>
     </div>
   );
 };

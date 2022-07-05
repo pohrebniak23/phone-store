@@ -14,7 +14,7 @@ export const ProductCard: React.FC<Props> = ({ card }) => {
   const discount = (card.price / 100) * card.discount;
   const isDiscounted = (() => (
     <>
-      {`$${card.price - discount}`}
+      {`$${(card.price - discount).toFixed(0)}`}
       <span>{`$${card.price}`}</span>
     </>
   ));
@@ -72,8 +72,8 @@ export const ProductCard: React.FC<Props> = ({ card }) => {
         </div>
       </div>
       <div className="product-card__nav">
-        <AddToCartBtn id={card.id} card={card} />
-        <AddFavouriteBtn id={card.id} card={card} />
+        <AddToCartBtn id={card.id} />
+        <AddFavouriteBtn id={card.id} />
       </div>
     </div>
   );

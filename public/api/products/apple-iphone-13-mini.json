@@ -2,7 +2,8 @@
     "additionalFeatures": "Front Facing 1.3MP Camera", 
     "android": {
         "os": "Android 12"
-    }, 
+    },
+    "type": "phone",
     "availability": [
         "Rozetka"
     ], 
@@ -58,7 +59,7 @@
     }, 
     "name": "Samsung Galaxy S22 Ultra 12/512 GB", 
     "storage": {
-        "flash": "512 GB", 
+        "capacity": "512 GB", 
         "ram": "12 GB"
     }
 }

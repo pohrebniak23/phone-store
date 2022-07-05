@@ -2,20 +2,22 @@ import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
 import { ProductCard } from '../../components/ProductCard';
+import { useAppSelector } from '../../hooks/redux';
 import { ProductItem } from '../../types/ProductItem';
 
 import './favourites.scss';
 
 export const Favourites: React.FC = () => {
-  const storageValue: string | null = localStorage.getItem('favourite');
-  let parsedStorage: ProductItem[] | [] = storageValue
-    ? JSON.parse(storageValue)
-    : [];
+  // const storageValue: string | null = localStorage.getItem('favourite');
+  // let parsedStorage: ProductItem[] | [] = storageValue
+  //   ? JSON.parse(storageValue)
+  //   : [];
+  const { favourites } = useAppSelector(state => state.favourites);
 
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
-  parsedStorage = parsedStorage.filter((item) => {
+  const parsedStorage = favourites.filter((item) => {
     return item.name.toLowerCase().includes(query.toLowerCase());
   });
 
