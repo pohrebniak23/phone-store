@@ -142,5 +142,41 @@
     "screen": "6.1 inches",
     "capacity": "256 GB",
     "ram": "4 GB"
+  },
+  {
+    "age": 8,
+    "type": "tablet",
+    "id": "samsung-galaxy-tab-s7-128GB",
+    "imageUrl": "https://content1.rozetka.com.ua/goods/images/big/194433607.jpg",
+    "name": "Samsung Galaxy Tab S7 128GB",
+    "price": 1099,
+    "discount": 0,
+    "screen": "12.4 inches",
+    "capacity": "128 GB",
+    "ram": "4 GB"
+  },
+  {
+    "age": 8,
+    "type": "tablet",
+    "id": "samsung-galaxy-tab-s7-256GB",
+    "imageUrl": "https://content1.rozetka.com.ua/goods/images/big/194433607.jpg",
+    "name": "Samsung Galaxy Tab S7 256GB",
+    "price": 1199,
+    "discount": 0,
+    "screen": "12.4 inches",
+    "capacity": "256 GB",
+    "ram": "4 GB"
+  },
+  {
+    "age": 8,
+    "type": "tablet",
+    "id": "samsung-galaxy-tab-s7-512GB",
+    "imageUrl": "https://content1.rozetka.com.ua/goods/images/big/194433607.jpg",
+    "name": "Samsung Galaxy Tab S7 512GB",
+    "price": 1299,
+    "discount": 0,
+    "screen": "12.4 inches",
+    "capacity": "512 GB",
+    "ram": "4 GB"
   }
 ]
