@@ -20,8 +20,8 @@ export const Tablets: React.FC = () => {
   const content = () => {
     if (tabletsList.length === 0) {
       return (
-        <p className="accessories__error">
-          Accessories not found
+        <p className="tablets__error">
+          Tablets not found
         </p>
       );
     }

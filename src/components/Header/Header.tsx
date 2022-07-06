@@ -48,7 +48,6 @@ export const Header: React.FC = () => {
   useEffect(() => {
     window.localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
-  
 
   return (
     <div className="header">

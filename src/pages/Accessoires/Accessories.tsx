@@ -42,7 +42,7 @@ export const Accessories: React.FC = () => {
 
         {isLoaded
           ? content()
-          : <ProductsLoader2x style={{ 'margin-top': '100px' }} />}
+          : <ProductsLoader2x style={{ 'marginTop': '100px' }} />}
       </div>
     </div>
   );

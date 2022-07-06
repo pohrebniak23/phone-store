@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import classNames from "classnames";
 import { getProductItem } from "../../api/api";
-import { ProductItem } from "../../types/ProductItem";
 import { ProductInfo } from "../../types/ProductInfo";
 import { BreadCrumbs } from "../../components/BreadCrumbs";
 import { BackBtn } from "../../components/BackBtn";
@@ -15,12 +14,11 @@ import { useAppSelector } from "../../hooks/redux";
 
 export const ProductDetails: React.FC = () => {
   const [productDetails, setProductDetails] = useState<ProductInfo>();
-  const [productInfo, setProductInfo] = useState<ProductItem>();
   const { productId } = useParams();
   const [currentImage, setCurrentImage] = useState("");
   const [currentColor, setCurrentColor] = useState();
   const [capacity, setCapacity] = useState("");
-  const { products } = useAppSelector(state => state.products)
+  const { products } = useAppSelector((state) => state.products);
 
   useEffect(() => {
     if (productId) {
@@ -29,16 +27,15 @@ export const ProductDetails: React.FC = () => {
         setCurrentColor(data.images[0].colorName);
         setCurrentImage(data.images[0].src[0]);
         setCapacity(data.storage.capacity);
-        setProductInfo(data);
       });
     }
   }, [productId]);
-  
 
   useEffect(() => {
     setCurrentImage(
-      productDetails?.images.find((item: any) => item.colorName === currentColor)
-        .src[0]
+      productDetails?.images.find(
+        (item: any) => item.colorName === currentColor
+      ).src[0]
     );
   }, [currentColor]);
 
@@ -106,7 +103,8 @@ export const ProductDetails: React.FC = () => {
                           key={item.colorId}
                           onClick={() => setCurrentColor(item.colorName)}
                           className={classNames("product-colors__item", {
-                            "product-colors__item_active": item.colorName === currentColor,
+                            "product-colors__item_active":
+                              item.colorName === currentColor,
                           })}
                         >
                           <div
@@ -121,20 +119,23 @@ export const ProductDetails: React.FC = () => {
                   <span>Select capacity</span>
                   <div className="product-memory__block">
                     {productDetails.storage.availableCapacity &&
-                      productDetails.storage.availableCapacity.map((item: any) => (
-                        <div
-                          key={item.name}
-                          onClick={() => setCapacity(item.name)}
-                          className={classNames("product-memory__item", {
-                            "product-memory__item_active":
-                              item.name === capacity,
-                          })}
-                        >
-                          <Link to={`/${productDetails.type}s/${item.link}`}>
-                            {item.name}
-                          </Link>
-                        </div>
-                      ))}
+                      productDetails.storage.availableCapacity.map(
+                        (item: any) => (
+                          <button
+                            key={item.name}
+                            type='button'
+                            onClick={() => setCapacity(item.name)}
+                            className={classNames("product-memory__item", {
+                              "product-memory__item_active":
+                                item.name === capacity,
+                            })}
+                          >
+                            <Link to={`/${productDetails.type}s/${item.link}`}>
+                              {item.name}
+                            </Link>
+                          </button>
+                        )
+                      )}
                   </div>
                 </div>
                 {productDetails && (
@@ -233,18 +234,20 @@ export const ProductDetails: React.FC = () => {
         </div>
       )}
 
-      <ProductsSlider
-        productsList={products}
-        title="Hot prices"
-        sliderSettings={{
-          dots: false,
-          arrows: true,
-          infinite: true,
-          speed: 500,
-          slidesToShow: 4,
-          slidesToScroll: 1,
-        }}
-      />
+      {productDetails && products && (
+        <ProductsSlider
+          productsList={products}
+          title="Hot prices"
+          sliderSettings={{
+            dots: false,
+            arrows: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+          }}
+        />
+      )}
     </div>
   );
 };

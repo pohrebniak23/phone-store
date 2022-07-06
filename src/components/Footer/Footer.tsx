@@ -22,12 +22,6 @@ export const Footer: React.FC = () => {
             >
               Github
             </a>
-            {/* <Link to="/">
-              Contacts
-            </Link>
-            <Link to="/">
-              Rights
-            </Link> */}
           </div>
 
           <BackToTop />

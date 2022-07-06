@@ -19,7 +19,7 @@ export const CartItem: React.FC<Props> = ({
 
   useEffect(() => {
     updateCount(cartItem.item.id, itemCount);
-  }, [itemCount]);
+  }, [itemCount, cartItem.item.id]);
 
   const addCount = () => {
     setItemCount(itemCount + 1);

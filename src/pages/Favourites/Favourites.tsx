@@ -1,23 +1,19 @@
-import React from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { BreadCrumbs } from '../../components/BreadCrumbs';
-import { ProductCard } from '../../components/ProductCard';
-import { useAppSelector } from '../../hooks/redux';
-import { ProductItem } from '../../types/ProductItem';
+import React from "react";
+import { useSearchParams } from "react-router-dom";
+import { BreadCrumbs } from "../../components/BreadCrumbs";
+import { ProductCard } from "../../components/ProductCard";
+import { useAppSelector } from "../../hooks/redux";
+import { ProductItem } from "../../types/ProductItem";
 
-import './favourites.scss';
+import "./favourites.scss";
 
 export const Favourites: React.FC = () => {
-  // const storageValue: string | null = localStorage.getItem('favourite');
-  // let parsedStorage: ProductItem[] | [] = storageValue
-  //   ? JSON.parse(storageValue)
-  //   : [];
-  const { favourites } = useAppSelector(state => state.favourites);
+  const { favourites } = useAppSelector((state) => state.favourites);
 
   const [searchParams] = useSearchParams();
-  const query = searchParams.get('query') || '';
+  const query = searchParams.get("query") || "";
 
-  const parsedStorage = favourites.filter((item) => {
+  const filteredFavourites = favourites.filter((item) => {
     return item.name.toLowerCase().includes(query.toLowerCase());
   });
 
@@ -27,21 +23,24 @@ export const Favourites: React.FC = () => {
         <BreadCrumbs title="Favourites" />
 
         <div className="favourites__block">
-          <h1 className="favourites__title title">
-            Favourites
-          </h1>
+          <h1 className="favourites__title title">Favourites</h1>
 
-          {parsedStorage.length > 0 && (
+          {filteredFavourites.length > 0 && (
             <p className="favourites__count">
-              {`${parsedStorage.length} items`}
+              {`${filteredFavourites.length} items`}
             </p>
           )}
 
           <div className="favourites__content">
-            {parsedStorage && parsedStorage.map((item: ProductItem) => (
-              <ProductCard card={item} />
-            ))}
+            {filteredFavourites &&
+              filteredFavourites.map((item: ProductItem) => (
+                <ProductCard card={item} />
+              ))}
           </div>
+
+          {filteredFavourites.length === 0 && (
+            <div className="favourites__empty">Favourites is empty</div>
+          )}
         </div>
       </div>
     </div>

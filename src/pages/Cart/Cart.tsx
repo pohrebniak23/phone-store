@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BackBtn } from "../../components/BackBtn";
 import { CartItem } from "../../components/CartItem/CartItem";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
